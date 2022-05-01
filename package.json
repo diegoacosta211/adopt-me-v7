@@ -1,0 +1,37 @@
+{
+  "name": "adopt-me-v7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "format": "prettier --write \"src/**/*.{jsx,js}\"",
+    "lint": "eslint \"src/**/*.{jsx,js}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoacosta211/adopt-me-v7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegoacosta211/adopt-me-v7/issues"
+  },
+  "homepage": "https://github.com/diegoacosta211/adopt-me-v7#readme",
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "parcel": "^2.5.0",
+    "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "browserslist": "last 2 Chrome versions"
+}
