@@ -159,7 +159,7 @@ header {
   width: 50%;
 }
 
-.carousel-smaller > img {
+.carousel-smaller img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -169,9 +169,16 @@ header {
   border: 2px solid #333;
 }
 
-.carousel-smaller > img.active {
+.carousel-smaller img.active {
   border-color: #333;
   opacity: 0.6;
+}
+
+.carousel-smaller button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .search-params label {
@@ -189,7 +196,7 @@ header {
 .search-params button,
 #modal button,
 #modal a,
-.details button {
+.details .btn {
   background-color: #ad343e;
   padding: 5px 25px;
   color: white;
@@ -327,7 +334,7 @@ header {
     margin: 0 auto;
     float: none;
   }
-  .carousel-smaller > img {
+  .carousel-smaller img {
     width: 60px;
     height: 60px;
   }
