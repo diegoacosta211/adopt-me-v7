@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import useBreedList from "./hooks/useBreedList";
 import PetsList from './PetsList';
+import { useContext } from "react";
+import ThemeContext from "./theme-context";
 
 const ANIMALS = ["dog", "cat", "bird", "rabbit", "reptile"];
 
@@ -10,6 +12,7 @@ const SearchParamas = () => {
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
+  const [theme, setTheme] = useContext(ThemeContext)
 
   const handleAnimalChange = ev => {
     setAnimal(ev.target.value);
@@ -52,7 +55,15 @@ const SearchParamas = () => {
           <option defaultValue hidden disabled value="">Choose an breed</option>
           {breeds.map(b=> <option value={b} key={b} defaultValue={b === breed}>{b}</option>)}
         </select>
-        <button>Submit</button>
+        <label htmlFor="theme">Choose Theme</label>
+        <select onChange={ev=> setTheme(ev.target.value)} onBlur={ev=> setTheme(ev.target.value)} name="theme" id="theme">
+          <option value="peru">Peru</option>
+          <option value="darkblue">Dark Blue</option>
+          <option value="chartreuse">Chartreuse</option>
+          <option value="mediumorchid">Mediumorchid</option>
+          <option value="green">Green</option>
+        </select>
+        <button style={{backgroundColor: theme}}>Submit</button>
       </form>
       <PetsList pets={pets} />
     </div>

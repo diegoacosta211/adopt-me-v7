@@ -2,6 +2,7 @@ import { Component } from "react";
 import { useParams } from 'react-router-dom';
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
+import ThemeContext from "./theme-context";
 
 class Details extends Component {
   state = {
@@ -25,8 +26,6 @@ class Details extends Component {
     if (this.state.loading) {
       return <h2>Loading...</h2>
     }
-
-    throw new Error('lmoa');
     const { animal, breed, city, state, description, name, images } = this.state;
     return (
       <div className="details">
@@ -34,7 +33,11 @@ class Details extends Component {
         <div>
           <h2>{name}</h2>
           <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-          <button className="btn">Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {
+              ([theme]) => <button className="btn" style={{ backgroundColor: theme}}>Adopt {name}</button>
+            }
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>
