@@ -21,6 +21,8 @@
   "homepage": "https://github.com/diegoacosta211/adopt-me-v7#readme",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@tailwindcss/forms": "^0.5.1",
+    "autoprefixer": "^10.4.7",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -28,7 +30,9 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "parcel": "^2.5.0",
-    "prettier": "^2.6.2"
+    "postcss": "^8.4.13",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.0.24"
   },
   "dependencies": {
     "react": "^18.1.0",
