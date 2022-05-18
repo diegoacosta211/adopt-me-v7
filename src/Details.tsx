@@ -2,22 +2,30 @@ import { Component, lazy } from "react";
 import { useParams } from 'react-router-dom';
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "./theme-context";
-// import Modal from "./Modal";
+import ThemeContext from "./ThemeContext";
+import { PetApiResponse, Animal } from "./types";
 
 const Modal = lazy(() => import('./Modal'));
 
-class Details extends Component {
+class Details extends Component<{ params: {id?: string}}> {
   state = {
     loading: true,
-    showModal: false
+    showModal: false,
+    animal: '' as Animal,
+    breed: '',
+    city: '',
+    state: '',
+    description: '',
+    name: '',
+    images: [] as string[],
   }
 
   async componentDidMount() {
+    if (!this.props.params.id) return;
     const res = await fetch(`
       http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}
     `);
-    const data = await res.json();
+    const data = (await res.json()) as PetApiResponse;
     this.setState({
       loading: false,
       ...data.pets[0],
@@ -63,6 +71,6 @@ class Details extends Component {
   }
 }
 
-const WithRouterDetails = () => <ErrorBoundary><Details params={useParams()} /></ErrorBoundary>
+const WithRouterDetails = () => <ErrorBoundary><Details params={useParams<{id: string}>()} /></ErrorBoundary>
 
 export default WithRouterDetails;

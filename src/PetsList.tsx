@@ -1,5 +1,12 @@
+import { FunctionComponent } from 'react';
 import Pet from './Pet';
-const PetsList = ({ pets }) => (
+import { Pet as PetType} from './types';
+
+interface IProps {
+  pets: PetType[]
+}
+
+const PetsList: FunctionComponent<IProps> = ({ pets }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {!pets.length ? (
       <h2>No Pets Found!</h2>

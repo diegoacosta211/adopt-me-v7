@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 // import SearchParams from './SearchParams';
 // import Details from './Details';
-import ThemeContext from './theme-context';
+import ThemeContext from './ThemeContext';
 import { StrictMode, useState, lazy, Suspense } from 'react';
 
 const Details = lazy(() => import('./Details'));

@@ -1,14 +1,18 @@
-import { Component } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import { Link, Navigate } from 'react-router-dom';
 
-class ErrorBoundary extends Component {
+interface IProps {
+  children: ReactNode
+}
+
+class ErrorBoundary extends Component<IProps> {
   state = { hasError: false, redirect: false }
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: ErrorInfo) {
     console.error(error, info);
   }
 

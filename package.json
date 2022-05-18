@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{jsx,js}\"",
-    "lint": "eslint \"src/**/*.{jsx,js}\" --quiet"
+    "format:check": "prettier --check \"src/**/*.{jsx,js}\"",
+    "lint": "eslint \"src/**/*.{jsx,js,ts,tsx}\" --quiet",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -24,9 +26,12 @@
     "@tailwindcss/forms": "^0.5.1",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
