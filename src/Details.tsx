@@ -2,12 +2,13 @@ import { Component, lazy } from "react";
 import { useParams } from 'react-router-dom';
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "./ThemeContext";
 import { PetApiResponse, Animal } from "./types";
+import { RootState } from "./redux/store";
+import { connect } from "react-redux";
 
 const Modal = lazy(() => import('./Modal'));
 
-class Details extends Component<{ params: {id?: string}}> {
+class Details extends Component<{ params: {id?: string}, theme: string}> {
   state = {
     loading: true,
     showModal: false,
@@ -47,11 +48,7 @@ class Details extends Component<{ params: {id?: string}}> {
         <div>
           <h2>{name}</h2>
           <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-          <ThemeContext.Consumer>
-            {
-              ([theme]) => <button onClick={this.toggleModal} className="btn" style={{ backgroundColor: theme}}>Adopt {name}</button>
-            }
-          </ThemeContext.Consumer>
+          <button onClick={this.toggleModal} className="btn" style={{ backgroundColor: this.props.theme}}>Adopt {name}</button>
           <p>{description}</p>
           {
             showModal ?
@@ -71,6 +68,16 @@ class Details extends Component<{ params: {id?: string}}> {
   }
 }
 
-const WithRouterDetails = () => <ErrorBoundary><Details params={useParams<{id: string}>()} /></ErrorBoundary>
+const mapStateToProps = (state: RootState) => ({
+  theme: state.theme
+});
+
+const ReduxWrappedDetails = connect(mapStateToProps)(Details);
+
+const WithRouterDetails = () => (
+  <ErrorBoundary>
+    <ReduxWrappedDetails params={useParams<{ id: string }>()} />
+  </ErrorBoundary>
+)
 
 export default WithRouterDetails;
