@@ -1,7 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-// import SearchParams from './SearchParams';
-// import Details from './Details';
-import { StrictMode, useState, lazy, Suspense } from 'react';
+import {  Routes, Route, Link } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -10,7 +8,6 @@ const SearchParams = lazy(() => import('./SearchParams'));
 
 const App = () => {
   return (
-    <StrictMode>
       <Provider store={store}>
         <Suspense fallback={<h2>Loading, be patient....</h2>}>
             <div
@@ -20,7 +17,6 @@ const App = () => {
                   "url('http://pets-images.dev-apis.com/pets/wallpaperC.jpg')",
               }}
             >
-              <BrowserRouter>
                 <header className="header">
                   <Link to="/">
                     <h1 className="text-6xl text-white hover:text-gray-200">
@@ -32,11 +28,9 @@ const App = () => {
                   <Route path="/" element={<SearchParams />} />
                   <Route path="/details/:id" element={<Details />} />
                 </Routes>
-              </BrowserRouter>
             </div>
         </Suspense>
       </Provider>
-    </StrictMode>
   );
  };
 

@@ -8,7 +8,9 @@
     "format": "prettier --write \"src/**/*.{jsx,js}\"",
     "format:check": "prettier --check \"src/**/*.{jsx,js}\"",
     "lint": "eslint \"src/**/*.{jsx,js,ts,tsx}\" --quiet",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,13 @@
   "homepage": "https://github.com/diegoacosta211/adopt-me-v7#readme",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "@tailwindcss/forms": "^0.5.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@types/jest": "^27.5.1",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
@@ -36,10 +44,13 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "parcel": "^2.5.0",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
     "tailwindcss": "^3.0.24",
+    "ts-jest": "^28.0.2",
     "typescript": "^4.6.4"
   },
   "dependencies": {
