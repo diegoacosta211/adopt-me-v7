@@ -7,7 +7,7 @@ const localCache: {
 
 type Status = "unloaded" | "loading" | "loaded";
 
-const useBreedList = (animal: Animal): [string[], string] => {
+const useBreedList = (animal?: Animal): [string[], string] => {
   const [breedList, setBreedList] = useState([] as string[]);
   const [status, setStatus] = useState("unloaded" as Status);
 
@@ -23,10 +23,12 @@ const useBreedList = (animal: Animal): [string[], string] => {
     async function requestBreedList() {
       setBreedList([])
       setStatus("loading");
-      const res = await fetch(`http://pets-v2.dev-apis.com/breeds?animal=${animal}`)
-      const result = (await res.json()) as BreedListApiResponse;
-      localCache[animal] = result.breeds || [];
-      setBreedList(localCache[animal]);
+      if (animal) {
+        const res = await fetch(`http://pets-v2.dev-apis.com/breeds?animal=${animal}`)
+        const result = (await res.json()) as BreedListApiResponse;
+        localCache[animal] = result.breeds || [];
+        setBreedList(localCache[animal]);
+      }
       setStatus("loaded");
     }
   }, [animal]);

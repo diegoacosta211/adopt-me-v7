@@ -20,7 +20,7 @@ class Carousel extends Component<IProps> {
     if (ev.currentTarget.dataset.index) {
       this.setState({
         active: +ev.currentTarget.dataset.index
-      }, () => console.log(this.state));
+      });
     }
   }
 
@@ -30,12 +30,12 @@ class Carousel extends Component<IProps> {
 
     return (
       <div className="carousel">
-        <img src={images[active]} alt="Animal" />
+        <img src={images[active]} alt="Animal" data-testid="hero" />
         <div className="carousel-smaller">
           {
             images.map((photo, idx) => (
               <button data-index={idx} key={idx} onClick={this.handleActive}>
-                <img src={photo} alt="animal thumb" className={idx === active ? 'active' : ''} />
+                <img src={photo} alt="animal thumb" className={idx === active ? 'active' : ''} data-testid={`thumbnails-${idx}`} />
               </button>
             ))
           }
